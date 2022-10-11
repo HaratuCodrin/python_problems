@@ -53,8 +53,8 @@ if __name__ == "__main__":
         print("##### Sorting Visualizer ####")
         print("1) Generate a new list of random numbers from 0 to 100")
         print("2) Display the list")
-        print("3) Visualize Strand Sort")
-        print("4) Visualize Permutation Sort")
+        print("3) Visualize Permutation Sort")
+        print("4) Visualize Strand Sort")
         print("5) Quit")
 
         choice = input("Enter Choice: ")
