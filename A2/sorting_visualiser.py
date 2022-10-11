@@ -2,12 +2,41 @@
 # visualize the way sorting algorithms work.
 
 import random
-from turtle import clear
+import time as temps
 
-def permutation_sort(array):
-    pass
+# function to check if an array is sorted
+def is_sorted(array):
+    n = len(array)
+    for i in range(0, n-1):
+        if (array[i] > array[i+1] ):
+            return False
+    return True
 
-def strand_sort(array):
+# function tu shuffle the array for the permutation sort 
+def shuffle(array):
+    n = len(array)
+    for i in range(0,n):
+        r = random.randint(0,n-1)
+        array[i], array[r] = array[r], array[i]
+
+def permutation_sort(array, step):
+    n = len(array)
+    i = 0
+    phase = 0
+    while not is_sorted(array):
+        shuffle(array)
+        i += 1
+        if i == step:
+            i = 0
+            phase += 1
+            print("State ", phase)
+            print(array)
+            temps.sleep(2)
+    
+    print("Array is sorted!")
+    print(array)
+
+def strand_sort(array, step):
     pass
 
 def generate_random_numbers(n):
@@ -41,11 +70,14 @@ if __name__ == "__main__":
             else:
                 print("The array is not generated yet.")
         elif choice == "3":
-            pass
+            step = int(input("Enter a viewing frequence (step):"))
+            permutation_sort(array, step)
         elif choice == "4":
             pass
         elif choice == "5":
             exit(1)
+        
+        input("Press any key to continue...")
         
         
             
