@@ -2,7 +2,11 @@
 # visualize the way sorting algorithms work.
 
 import random
-import time as temps
+import copy
+from time import sleep as dormir
+
+
+
 
 # function to check if an array is sorted
 def is_sorted(array):
@@ -31,13 +35,10 @@ def permutation_sort(array, step):
             phase += 1
             print("State ", phase)
             print(array)
-            temps.sleep(2)
+            dormir(2)
     
     print("Array is sorted!")
     print(array)
-
-def strand_sort(array, step):
-    pass
 
 def generate_random_numbers(n):
     list = []
@@ -73,8 +74,10 @@ if __name__ == "__main__":
             step = int(input("Enter a viewing frequence (step):"))
             permutation_sort(array, step)
         elif choice == "4":
-            pass
+            step = int(input("Enter a viewing frequence (step): "))
+            array = strand_sort(array, step)
         elif choice == "5":
+            print("Have a nice day!")
             exit(1)
         
         input("Press any key to continue...")
