@@ -2,11 +2,8 @@
 # visualize the way sorting algorithms work.
 
 import random
-import copy
 from time import sleep as dormir
-
-
-
+from strand_sort import *
 
 # function to check if an array is sorted
 def is_sorted(array):

@@ -1,8 +1,6 @@
 #  For a given natural number n find the minimal
 #  natural number m formed with the same digits.
 
-
-
 def bubbleSort(arr):
     n = len(arr)
     # optimize code, so if the array is already sorted, it doesn't need
@@ -50,7 +48,6 @@ def find_minimal_configuration(number):
     return n
         
     
-
 if __name__ == "__main__":
 
     numbers = [3658, 4167, 1895, 87, 193453]
