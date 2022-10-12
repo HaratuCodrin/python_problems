@@ -5,7 +5,6 @@ def strand_sort(inp):
     print("Main: ", inp)
   return output
    
-   
 def strand(inp):
   element, sub = 0, [inp.pop(0)]
   while element < len(inp):
