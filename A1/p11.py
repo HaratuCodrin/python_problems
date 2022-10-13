@@ -9,16 +9,12 @@ def get_different_digits(number):
     n = number 
     digits = []
     while n != 0:
-        found = False 
-        current_digit = n % 10
-        for digit in digits:
-            if current_digit == digit:
-                found = True
-        
+        current_digit = n % 10 # on prend la derniere chiffre
+
+        if current_digit not in digits:
+            digits.append(current_digit)
+
         n = int(n / 10)
-        if found:
-            continue
-        digits.append(current_digit)
         
     bubbleSort(digits)
     return digits
@@ -38,7 +34,7 @@ def property_P(n1, n2):
     return True
             
 if __name__ == "__main__":
-    n1 = 3321
+    n1 = 33214
     n2 = 31223
     print(property_P(n1, n2))
 
