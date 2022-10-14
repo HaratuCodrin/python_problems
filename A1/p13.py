@@ -9,12 +9,13 @@ def get_prime_divisors(number):
     i = 2
     divisors = []
     while i <= number:
-        if number % i:
+        if (number % i != 0):
             i += 1
         else:
             number //= i
             if i not in divisors:
                 divisors.append(i)
+
     if number > 1:
         divisors.append(number)
     return divisors
@@ -34,8 +35,7 @@ def compute_nth_element(n):
     
 
 if __name__ == "__main__":
-    print(compute_nth_element(10))   
-   # print(get_prime_divisors(56)) 
+    print(compute_nth_element(23)) 
 
     
     

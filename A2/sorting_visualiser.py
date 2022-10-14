@@ -3,7 +3,7 @@
 
 import random
 from time import sleep as dormir
-from strand_sort import *
+from strand_sort import strand_sort
 
 # function to check if an array is sorted
 def is_sorted(array):
@@ -56,7 +56,7 @@ if __name__ == "__main__":
         print("5) Quit")
 
         choice = input("Enter Choice: ")
-        choice = choice.strip()
+        choice = choice.strip() # pour ignorer les espaces 
 
         if choice == "1":
             n = int(input("Enter a number of elements: "))
@@ -72,7 +72,7 @@ if __name__ == "__main__":
             permutation_sort(array, step)
         elif choice == "4":
             step = int(input("Enter a viewing frequence (step): "))
-            array = strand_sort(array, step)
+            array = strand_sort(array, step) # il faut voir!!!!!
         elif choice == "5":
             print("Have a nice day!")
             exit(1)
