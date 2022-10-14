@@ -1,0 +1,18 @@
+24 2
+12 2
+6  2
+3  3
+1
+
+n //= i
+
+sequence[0] = 1
+sequence[1] = 2 
+
+liste = [1, 2, 3]
+
+
+
+n = liste.pop(0)
+
+liste = [2, 3]
