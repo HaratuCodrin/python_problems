@@ -60,8 +60,8 @@ def build_solution_recursive(n, solutions):
                 
 
 if __name__ == "__main__":
-    resolution = build_solution_iterative(4)
-    resolution2 = build_solution_recursive(4, [""])
+    resolution = build_solution_iterative(10)
+    resolution2 = build_solution_recursive(10, [""])
     print(resolution2)
     print(resolution)
 
