@@ -31,21 +31,75 @@ def increasing_modulus_sequence(complex_numbers):
     return longueur, sequence
 
 def alternating_real_sequence(complex_numbers):
+    if len(complex_numbers) == 0:
+        return
     sequences = [] # tous les sequences 
     sequence = [] # temporaire
-    
+    last_real = -1
+    up = False
     for complex_number in complex_numbers:
         current_real = complex_number.real
-        if current_real > last_real:
+        if len(sequence) == 0:
             sequence.append(complex_number)
+        elif len(sequence) == 1:
+            if last_real != current_real:
+                sequence.append(complex_number)
+                if current_real > last_real:
+                    up = True
+                else:
+                    up = False
         else:
-            sequences.append(sequence)
-            sequence.clear()
-            sequence.append(complex_number)
-        lowest_modulus = current_modulus
+            if up:
+                if (len(sequence) + 1) % 2 == 1:
+                    if current_real < last_real:
+                        sequence.append(complex_number)
+                    else:
+                        sequences.append(sequence)
+                        sequence = []
+                        sequence.append(complex_number)
+                else:
+                      if current_real > last_real:
+                        sequence.append(complex_number)
+                      else:
+                        sequences.append(sequence)
+                        sequence = []
+                        sequence.append(complex_number)
+            else:
+                if (len(sequence) + 1) % 2 == 1:
+                    if current_real > last_real:
+                        sequence.append(complex_number)
+                    else:
+                        sequences.append(sequence)
+                        sequence = []
+                        sequence.append(complex_number)
+                else:
+                      if current_real < last_real:
+                        sequence.append(complex_number)
+                      else:
+                        sequences.append(sequence)
+                        sequence = []
+                        sequence.append(complex_number)
+
+            last_real = current_real
+        
+    longueur = 0
+    sequence = []
+    for seq in sequences:
+        if len(seq) > longueur:
+            longueur = len(seq)
+            sequence = seq
+
+    return longueur, sequence
+
+
+
+
+
+
+
             
 if __name__ == "__main__":
-    
+
     complex_numbers = []
     complex_numbers.append(ComplexNumber(2, -1))
     complex_numbers.append(ComplexNumber(-5, 3))
@@ -89,7 +143,10 @@ if __name__ == "__main__":
             for complex_number in sequence:
                 print(complex_number)
         elif choice == "5":
-            pass
+            longueur, sequence = alternating_real_sequence(complex_numbers)
+            print(longueur)
+            for complex_number in sequence:
+                print(complex_number)
         elif choice == "6":
             print("Have a nice day!")
             exit(1)
