@@ -1,5 +1,6 @@
 # all functions take a list of dictionaries as parameters
 from collections import OrderedDict
+import copy
 
 class NoSuchProblem(Exception):
     pass
@@ -99,14 +100,22 @@ def display_equal_n(list, n):
 
 
 def display_sorted(list):
-    new_dict = {}
+    # bubble sort with averages 
+    n = len(list)
+    new_list = copy.deepcopy(list)
+    swapped = False
 
-    for participant in list:
-        avg = average(participant)
-        new_dict[avg] = participant
-    new_dict2 = OrderedDict(sorted(new_dict.items()))
+    for i in range(n-1):
+        for j in range(0, n-i-1):
+            if average(new_list[j]) < average(new_list[j+1]):
+                swapped = True
+                new_list[j], new_list[j + 1] = new_list[j + 1], new_list[j]
+        if not swapped:
+            break
     
-    display(new_dict2.values())
+    display(new_list)
+
+
             
     
 

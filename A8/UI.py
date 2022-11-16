@@ -57,7 +57,6 @@ def menu_instance(list):
             remove_from_a_to_b(list, pos1, pos2)
         except IndexError:
             print("Some participants don't exist, try again...")
-
     elif choice == "6":
         pos = int(input("Enter position of the contestant x =").strip())
         problem = int(input("Enter the number of the problem = ").strip())
