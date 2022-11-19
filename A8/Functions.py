@@ -1,8 +1,7 @@
 # all functions take a list of dictionaries as parameters
-from collections import OrderedDict
 import copy
 
-class NoSuchProblem(Exception):
+class NoSuch(Exception):
     pass
 
 
@@ -15,12 +14,20 @@ def average(participant):
     return average
 
 def add_new_result(list, P1, P2, P3):
+    if P1 > 10 or P2 > 10 or P3 > 10:
+        raise NoSuch
+    if P1 < 0 or P2 < 0 or P3 < 0:
+        raise NoSuch
     list.append({"P1" : P1, "P2" : P2, "P3" : P3})
 
 def insert_result(list, position, P1, P2, P3):
     n = len(list)
     if position > n - 1:
         raise IndexError
+    if P1 > 10 or P2 > 10 or P3 > 10:
+        raise NoSuch
+    if P1 < 0 or P2 < 0 or P3 < 0:
+        raise NoSuch
     list[position] = {"P1" : P1, "P2" : P2, "P3" : P3}
 
 def remove(list, position):
@@ -48,9 +55,14 @@ def replace_score(list, position, problem, grade):
     if position > n - 1:
         raise IndexError
     if problem > 3 or problem < 1:
-        raise NoSuchProblem
+        raise NoSuch
+    
+    if grade > 10:
+        raise NoSuch
+    if grade < 0:
+        raise NoSuch
 
-    prob = "P"+str(problem)
+    prob = "P"+str(problem)   # creer un string "P1", "P2" ou "P3"
     list[position][prob] = grade
     
 
@@ -69,7 +81,7 @@ def display_below_n(list, n):
             new_list.append(participant)
     
     if len(new_list) == 0:
-        raise NoSuchProblem
+        raise NoSuch
 
     display(new_list)
 
@@ -82,7 +94,7 @@ def display_over_n(list, n):
             new_list.append(participant)
     
     if len(new_list) == 0:
-        raise NoSuchProblem
+        raise NoSuch
 
     display(new_list)
 
@@ -94,7 +106,7 @@ def display_equal_n(list, n):
             new_list.append(participant)
     
     if len(new_list) == 0:
-        raise NoSuchProblem
+        raise NoSuch
 
     display(new_list)
 

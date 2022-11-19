@@ -15,8 +15,8 @@ options = [
 secondary_options = [
     "######## Pick another option ########",
     "1) Display all contestants in decreasing order of average score.",
-    "2) Display all contestants with an average below n."
-    "3) Display all contestants with an average over n."
+    "2) Display all contestants with an average below n.",
+    "3) Display all contestants with an average over n.",
     "4) Display all contestants with an average equal to n."
 ]
 
@@ -40,7 +40,10 @@ def menu_instance(list):
         grade1 = int(input("Enter grade 1 of the new contestant:").strip())
         grade2 = int(input("Enter grade 2 of the new contestant:").strip())
         grade3 = int(input("Enter grade 3 of the new contestant:").strip())
-        add_new_result(list, grade1, grade2, grade3)
+        try:
+            add_new_result(list, grade1, grade2, grade3)
+        except NoSuch:
+            print("Some of the grades are incorrect... Try again.")
     elif choice == "4":
         pos = int(input("Enter position of the contestant x =").strip())
         grade1 = int(input("Enter grade 1 of the new contestant:").strip())
@@ -50,6 +53,8 @@ def menu_instance(list):
             insert_result(list, pos, grade1, grade2, grade3)
         except IndexError:
             print("Participant doesn't exist, try again...")
+        except NoSuch:
+            print("Some of the grades are incorrect... Try again.")
     elif choice == "5":
         pos1 = int(input("Enter first position a = ").strip())
         pos2 = int(input("Enter first position b = ").strip())
@@ -58,14 +63,14 @@ def menu_instance(list):
         except IndexError:
             print("Some participants don't exist, try again...")
     elif choice == "6":
-        pos = int(input("Enter position of the contestant x =").strip())
+        pos = int(input("Enter position of the contestant x = ").strip())
         problem = int(input("Enter the number of the problem = ").strip())
         grade = int(input("Enter the grade = "))
         try:
             replace_score(list, pos, problem, grade)
         except IndexError:
             print("Participant doesn't exist, try again...")
-        except NoSuchProblem:
+        except NoSuch:
             print("Wrong problem number, try again...")
     elif choice == "7":
         for option in secondary_options:
@@ -78,21 +83,21 @@ def menu_instance(list):
             print("The contestants with average below", n, ":")
             try:
                 display_below_n(list, n)
-            except NoSuchProblem:
+            except NoSuch:
                 print("No such participants...")
         elif secondary_choice == "3":
             n = int(input("Enter a value n = "))
             print("The contestants with average over", n, ":")
             try:
                 display_over_n(list, n)
-            except NoSuchProblem:
+            except NoSuch:
                 print("No such participants...")
         elif secondary_choice == "4":
             n = int(input("Enter a value n = "))
             print("The contestants with average equal to", n, ":")
             try:
                 display_equal_n(list, n)
-            except NoSuchProblem:
+            except NoSuch:
                 print("No such participants...")
     elif choice == "8":
         print("Bisous!")
