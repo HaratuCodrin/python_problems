@@ -127,6 +127,105 @@ def display_sorted(list):
     
     display(new_list)
 
+def get_sorted(list):
+    # bubble sort with averages 
+    n = len(list)
+    new_list = copy.deepcopy(list)
+    swapped = False
+
+    for i in range(n-1):
+        for j in range(0, n-i-1):
+            if average(new_list[j]) < average(new_list[j+1]):
+                swapped = True
+                new_list[j], new_list[j + 1] = new_list[j + 1], new_list[j]
+        if not swapped:
+            break
+    
+    return new_list
+
+def get_sorted_by_problem(list, problem):
+    prob = "P" + str(problem)
+
+    n = len(list)
+    new_list = copy.deepcopy(list)
+    swapped = False
+
+    for i in range(n-1):
+        for j in range(0, n-i-1):
+            if new_list[j][prob] < new_list[j+1][prob]:
+                swapped = True
+                new_list[j], new_list[j + 1] = new_list[j + 1], new_list[j]
+        if not swapped:
+            break
+    
+    return new_list
+
+
+# D
+def top_n(list, n):
+    sorted_list = get_sorted(list)
+    new_list = []
+    for i in range(0, n):
+        new_list.append(sorted_list[i])
+    
+    return new_list
+
+def top_n_for_problem(list, n, problem):
+    if 6 % problem != 0 or problem == 6:
+        raise NoSuch
+    
+    if n > len(list) - 1 or n < 1:
+        raise NoSuch
+
+    sorted_list = get_sorted_by_problem(list, problem)
+    new_list = []
+    for i in range(0, n):
+        new_list.append(sorted_list[i])
+    
+    return new_list
+
+def remove_less_than(list, score):
+    changed = False
+    for participant in list:
+        if average(participant) < score:
+            changed = True
+            for grade in participant:
+                participant[grade] = 0
+    if not changed:
+        raise NoSuch
+
+def remove_more_than(list, score):
+    changed = False
+    for participant in list:
+        if average(participant) > score:
+            changed = True
+            for grade in participant:
+                participant[grade] = 0
+    if not changed:
+        raise NoSuch
+
+def remove_equal_to(list, score):
+    changed = False
+    for participant in list:
+        if average(participant) == score:
+            changed = True
+            for grade in participant:
+                participant[grade] = 0
+    if not changed:
+        raise NoSuch
+
+# E
+
+def undo(list, stack):
+    if len(stack[-1]) < len(list):
+        diff = len(list) - len(stack[-1])
+        for i in range(diff):
+            list.pop()
+    for i in range(len(stack[-1])):
+        list[i] = stack[-1][i]
+
+    
+    
 
             
     

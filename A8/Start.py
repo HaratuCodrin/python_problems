@@ -1,4 +1,6 @@
 from UI import menu_instance 
+from collections import deque
+from Functions import *
 
 if __name__ == "__main__":
     student_list = [
@@ -13,6 +15,9 @@ if __name__ == "__main__":
         {"P1":8, "P2":4, "P3":6},
         {"P1":9, "P2":6, "P3":8}
     ]
+
+    queue = deque()
     
     while True:
-        menu_instance(student_list)
+        menu_instance(student_list, queue)
+
