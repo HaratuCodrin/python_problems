@@ -1,0 +1,4 @@
+{
+    "_comment":"the repo can be ''Memory', 'Text' or 'Binary'.",
+    "repo":"Binary" 
+}

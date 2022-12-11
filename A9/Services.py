@@ -1,12 +1,21 @@
 from ComplexNumber import ComplexNumber
 from Repositories import *
 from copy import deepcopy
+import json
 class NotPossible(Exception):
     pass
 
 class Services:
     def __init__(self, liste, moves):
-        self.repo = TextFileRepository(liste) # here you change the repository type
+        f = open('settings_properties.json')
+        data = json.load(f)
+        if data["repo"] == "Memory":
+            self.repo = Repository(liste)
+        elif data["repo"] == "Text":
+            self.repo = TextFileRepository(liste)
+        elif data["repo"] == "Binary":
+            self.repo = BinaryFileRepository(liste)
+
         self.moves = moves
 
     def add_number(self, a, b):
