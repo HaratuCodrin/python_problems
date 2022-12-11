@@ -45,10 +45,13 @@ class UserInterface:
             elif choice == "2":
                 self.services.display_liste()
             elif choice == "3":
-                pass
+                start = int(input("Start incex:"))
+                end = int(input("End index:"))
+                self.services.filter_liste(start, end)
             elif choice == "4":
-                pass
+                self.services.undo()
             elif choice == "5":
+                self.services.save()
                 print("Bisous!")
                 exit(1)
 
