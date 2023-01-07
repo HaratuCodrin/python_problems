@@ -1,0 +1,24 @@
+2. Student Lab Assignment
+
+Write an application that manages student lab assignments for a discipline. The application will store:
+
+    Student: student_id, name, group
+    Assignment: assignment_id, description, deadline
+    Grade: assignment_id, student_id, grade_value
+
+Create an application that allows to:
+
+    Manage students and assignments. The user can add, remove, update, and list both students and assignments.
+    Give assignments to a student or a group of students. In case an assignments
+
+
+
+    a = [1 , 2, 3]
+
+    a.append(4)
+
+    a = [ 1, 2, 3 , 4]
+
+    a.remove(3)
+
+    a = [ 1, 2, 4]
