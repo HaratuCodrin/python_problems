@@ -3,24 +3,25 @@
 class UI:
 
     options = [
-        ["################## Game Name ###################",
-        "1. Start new game.",
+        ["################## Hotel Transilvania ###################",
+        "1. Make a new Reservation",
         "2. Quit"],
 
-        ["################## Game Name ###################",
-        "1. Pick a color.",
+        ["################## Hotel Transilvania ###################",
+        "1. Input your reservation data.",
         "2. Go Back to Main Menu",
         "3. Quit."],
 
-        ["################## Game Name ###################",
+        ["################## Hotel Transilvania ###################",
         "1. Yellow",
         "2. Red",
         ],
 
     ]
 
-    def __init__(self, state = 0):
+    def __init__(self, hotel, state = 0):
         self.state = state
+        self.hotel = hotel
 
     def loop(self):
         while True:
